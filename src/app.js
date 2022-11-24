@@ -1,4 +1,6 @@
-import express from 'express';
+const express = require('express');
+// eslint-disable-next-line import/extensions
+// const config = require('./config');
 
 const app = express();
 
