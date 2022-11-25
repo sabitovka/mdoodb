@@ -1,15 +1,18 @@
 const express = require('express');
-// eslint-disable-next-line import/extensions
-// const config = require('./config');
+const mongoose = require('mongoose');
+const config = require('./config');
+require('./models');
 
 const app = express();
 
-const PORT = 5000;
+const PORT = config.app.port;
+const MONGO_URI = `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
 
 app.use('/', (req, res) => res.status(200).send('Hello World'));
 
 async function start() {
   try {
+    await mongoose.connect(MONGO_URI);
     app.listen(PORT, () => console.log(`App has been started on ${PORT}...`));
   } catch (e) {
     console.log('Server error ', e.message);

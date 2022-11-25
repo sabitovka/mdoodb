@@ -1,6 +1,6 @@
-import { Schema, model } from 'mongoose';
+const { Schema, model } = require('mongoose');
 
-const studentSchema = Schema({
+const subjectSchema = Schema({
   name: String,
   teachers: [{
     type: Schema.Types.ObjectId,
@@ -12,4 +12,4 @@ const studentSchema = Schema({
   }],
 });
 
-export default model('Student', studentSchema);
+module.exports = model('Subject', subjectSchema);

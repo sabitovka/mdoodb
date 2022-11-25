@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+const { Schema, model } = require('mongoose');
 
 const markSchema = Schema({
   value: Number,
@@ -13,4 +13,4 @@ const markSchema = Schema({
   },
 });
 
-export default model('Mark', markSchema);
+module.exports = model('Mark', markSchema);

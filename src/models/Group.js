@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+const { Schema, model } = require('mongoose');
 
 const groupSchema = Schema({
   name: String,
@@ -13,4 +13,4 @@ const groupSchema = Schema({
   }],
 });
 
-export default model('Group', groupSchema);
+module.exports = model('Group', groupSchema);
