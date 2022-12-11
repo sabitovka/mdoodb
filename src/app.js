@@ -6,7 +6,7 @@ require('./models');
 const app = express();
 
 const PORT = config.app.port;
-const MONGO_URI = `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
+const MONGO_URI = config.db.url;
 
 app.use('/', (req, res) => res.status(200).send('Hello World'));
 

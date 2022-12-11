@@ -11,7 +11,7 @@ function createRandomPerson() {
     firstname: faker.name.firstName(),
     lastname: faker.name.lastName(),
     middlename: faker.name.middleName(),
-    birthday: faker.date.birthdate(),
+    birthday: faker.date.birthdate({ mode: 'age', min: 18, max: 55 }),
   };
 }
 
@@ -19,16 +19,16 @@ function createRandomPerson() {
  * Make any changes you need to make to the database here
  */
 async function up() {
-  await mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
-  await Person.insertMany([...Array.from({ length: 35 }, () => createRandomPerson())]);
-  // await Person.create(createRandomPerson());
+  await mongoose.connect(config.db.url);
+  await Person.insertMany([...Array.from({ length: 50 }, () => createRandomPerson())]);
 }
 
 /**
  * Make any changes that UNDO the up function side effects here (if possible)
  */
 async function down() {
-  //await Person.deleteMany();
+  await mongoose.connect(config.db.url);
+  await Person.deleteMany();
 }
 
 module.exports = { up, down };
